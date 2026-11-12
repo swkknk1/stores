@@ -279,6 +279,65 @@
       background: rgba(255, 255, 255, 0.18);
     }
 
+    /* Physical Media Tags Row */
+    .logo-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 52px;
+    }
+
+    .media-tags {
+      margin-top: 0.65rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem 0.45rem;
+      width: 100%;
+    }
+
+    .media-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding-block: 0.2rem;
+      padding-inline: 0.55rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    /* Tag themes per store */
+    .btn-bn .media-tag {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fef08a;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    .btn-he .media-tag {
+      background: rgba(180, 83, 9, 0.08);
+      color: #78350f;
+      border: 1px solid rgba(217, 119, 6, 0.25);
+    }
+
+    .btn-ebay .media-tag {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+
+    .btn-bookoff .media-tag {
+      background: rgba(255, 255, 255, 0.12);
+      color: #e2e8f0;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
     /* Footer Note */
     .portal-footer {
       text-align: center;
@@ -295,12 +354,12 @@
     <header class="portal-header">
       <div class="portal-badge">
         <span class="dot"></span>
-        <span>Official Stores</span>
+        <span>Physical Media Directory</span>
       </div>
       <h1 class="portal-title">Tap to Visit Store</h1>
     </header>
 
-    <!-- Pure Logo Buttons Grid -->
+    <!-- Pure Logo Buttons Grid with Physical Media Tags -->
     <nav class="buttons-grid" aria-label="Official Store Links">
 
       <!-- 1. Barnes & Noble -->
@@ -309,10 +368,18 @@
          target="_blank" 
          rel="noopener noreferrer"
          aria-label="Barnes & Noble">
-        <img src="assets/barnes-noble-light.svg" 
-             alt="Barnes & Noble" 
-             loading="eager" 
-             fetchpriority="high" />
+        <div class="logo-box">
+          <img src="assets/barnes-noble-light.svg" 
+               alt="Barnes & Noble" 
+               loading="eager" 
+               fetchpriority="high" />
+        </div>
+        <div class="media-tags">
+          <span class="media-tag">📚 图书 Books</span>
+          <span class="media-tag">📖 漫画 Manga</span>
+          <span class="media-tag">🎵 黑胶 Vinyl</span>
+          <span class="media-tag">💿 影音 CD/DVD</span>
+        </div>
         <div class="logo-btn-link-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </div>
@@ -324,10 +391,18 @@
          target="_blank" 
          rel="noopener noreferrer"
          aria-label="Hungry Ear Records">
-        <img src="assets/hungry-ear.svg" 
-             alt="Hungry Ear Records" 
-             loading="eager" 
-             fetchpriority="high" />
+        <div class="logo-box">
+          <img src="assets/hungry-ear.svg" 
+               alt="Hungry Ear Records" 
+               loading="eager" 
+               fetchpriority="high" />
+        </div>
+        <div class="media-tags">
+          <span class="media-tag">🎵 黑胶 Vinyl</span>
+          <span class="media-tag">💿 唱片 CDs</span>
+          <span class="media-tag">📼 磁带 Cassettes</span>
+          <span class="media-tag">📻 音频设备 Audio</span>
+        </div>
         <div class="logo-btn-link-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </div>
@@ -339,10 +414,18 @@
          target="_blank" 
          rel="noopener noreferrer"
          aria-label="eBay">
-        <img src="assets/ebay.svg" 
-             alt="eBay" 
-             loading="eager" 
-             fetchpriority="high" />
+        <div class="logo-box">
+          <img src="assets/ebay.svg" 
+               alt="eBay" 
+               loading="eager" 
+               fetchpriority="high" />
+        </div>
+        <div class="media-tags">
+          <span class="media-tag">📚 收藏图书 Books</span>
+          <span class="media-tag">🎵 经典黑胶 Vinyl</span>
+          <span class="media-tag">💿 唱片影音 CD/DVD</span>
+          <span class="media-tag">🎮 实体游戏 Games</span>
+        </div>
         <div class="logo-btn-link-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </div>
@@ -354,10 +437,18 @@
          target="_blank" 
          rel="noopener noreferrer"
          aria-label="BOOK OFF">
-        <img src="assets/book-off.png" 
-             alt="BOOK OFF" 
-             loading="eager" 
-             fetchpriority="high" />
+        <div class="logo-box">
+          <img src="assets/book-off.png" 
+               alt="BOOK OFF" 
+               loading="eager" 
+               fetchpriority="high" />
+        </div>
+        <div class="media-tags">
+          <span class="media-tag">📚 二手图书 Books</span>
+          <span class="media-tag">📖 经典漫画 Manga</span>
+          <span class="media-tag">💿 二手影音 CD/DVD</span>
+          <span class="media-tag">🎮 实体游戏 Games</span>
+        </div>
         <div class="logo-btn-link-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </div>
@@ -367,7 +458,7 @@
 
     <!-- Footer -->
     <footer class="portal-footer">
-      <p>© 2026 Store Directory • Tap any logo to open</p>
+      <p>© 2026 Physical Media Portal • Tap any card to open store</p>
     </footer>
   </main>
 
