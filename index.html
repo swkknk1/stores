@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="description" content="Official Store Portal - Barnes & Noble, Hungry Ear Records, eBay, BOOK·OFF">
+  <meta name="theme-color" content="#090d16">
+  <title>Stores Portal | 精选店铺</title>
+  <style>
+    /* Reset & Design Tokens */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #090d16;
+      --card-radius: 1.25rem;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: var(--bg);
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 60%);
+      font-family: var(--font-sans);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-block: 2.5rem;
+      padding-inline: 1.25rem;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 440px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      align-items: stretch;
+    }
+
+    /* Minimalist Portal Header */
+    .portal-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .portal-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding-block: 0.25rem;
+      padding-inline: 0.75rem;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      font-size: 0.75rem;
+      color: #94a3b8;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .portal-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+
+    .portal-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
+    }
+
+    /* Buttons Container */
+    .buttons-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+    }
+
+    /* Common Logo Button Card Styles */
+    .logo-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 82px;
+      padding-block: 1rem;
+      padding-inline: 1.5rem;
+      border-radius: var(--card-radius);
+      text-decoration: none;
+      outline: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      overflow: hidden;
+    }
+
+    .logo-btn:focus-visible {
+      outline: 3px solid #38bdf8;
+      outline-offset: 3px;
+    }
+
+    .logo-btn:hover {
+      transform: translateY(-3px) scale(1.01);
+    }
+
+    .logo-btn:active {
+      transform: scale(0.975);
+    }
+
+    /* Mini external link icon badge in corner */
+    .logo-btn-link-icon {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.65;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .logo-btn-link-icon svg {
+      width: 12px;
+      height: 12px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .logo-btn:hover .logo-btn-link-icon {
+      opacity: 1;
+      transform: translate(1px, -1px);
+    }
+
+    /* ========================================================
+       1. Barnes & Noble Button
+       ======================================================== */
+    .btn-bn {
+      background: linear-gradient(135deg, #00594C 0%, #003e35 100%);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 10px 25px -4px rgba(0, 89, 76, 0.45),
+                  0 2px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-bn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .btn-bn:hover {
+      box-shadow: 0 14px 30px -4px rgba(0, 89, 76, 0.6),
+                  0 0 20px rgba(212, 175, 55, 0.35);
+      border-color: rgba(212, 175, 55, 0.7);
+    }
+
+    .btn-bn img {
+      max-height: 38px;
+      width: auto;
+      max-width: 82%;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    }
+
+    .btn-bn .logo-btn-link-icon {
+      color: #fef08a;
+      background: rgba(212, 175, 55, 0.2);
+    }
+
+    /* ========================================================
+       2. Hungry Ear Records Button
+       ======================================================== */
+    .btn-he {
+      background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.6),
+                  0 0 15px rgba(245, 158, 11, 0.15);
+    }
+
+    /* Vinyl record concentric grooves texture */
+    .btn-he::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        radial-gradient(circle at 100% 50%, transparent 35%, rgba(255, 255, 255, 0.04) 36%, transparent 37%),
+        radial-gradient(circle at 100% 50%, transparent 52%, rgba(255, 255, 255, 0.04) 53%, transparent 54%),
+        radial-gradient(circle at 100% 50%, transparent 68%, rgba(255, 255, 255, 0.04) 69%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .btn-he:hover {
+      box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.7),
+                  0 0 25px rgba(245, 158, 11, 0.4);
+      border-color: rgba(245, 158, 11, 0.7);
+    }
+
+    .btn-he img,
+    .btn-he svg {
+      max-height: 54px;
+      width: auto;
+      max-width: 80%;
+      color: #fffbeb;
+      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+    }
+
+    .btn-he .logo-btn-link-icon {
+      color: #fde68a;
+      background: rgba(245, 158, 11, 0.2);
+    }
+
+    /* ========================================================
+       3. eBay Button
+       ======================================================== */
+    .btn-ebay {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.12),
+                  0 4px 10px rgba(0, 100, 210, 0.15);
+    }
+
+    .btn-ebay:hover {
+      box-shadow: 0 16px 32px -4px rgba(0, 0, 0, 0.2),
+                  0 0 25px rgba(0, 100, 210, 0.3);
+      border-color: #0064d2;
+    }
+
+    .btn-ebay img,
+    .btn-ebay svg {
+      max-height: 48px;
+      width: auto;
+      max-width: 78%;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+    }
+
+    .btn-ebay .logo-btn-link-icon {
+      color: #0064d2;
+      background: rgba(0, 100, 210, 0.1);
+    }
+
+    /* ========================================================
+       4. BOOK·OFF Button
+       ======================================================== */
+    .btn-bookoff {
+      background: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.7),
+                  0 0 15px rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-bookoff:hover {
+      box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.85),
+                  0 0 25px rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-bookoff img {
+      max-height: 48px;
+      width: auto;
+      max-width: 76%;
+      filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.2));
+    }
+
+    .btn-bookoff .logo-btn-link-icon {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    /* Footer Note */
+    .portal-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+    <!-- Header -->
+    <header class="portal-header">
+      <div class="portal-badge">
+        <span class="dot"></span>
+        <span>Official Stores</span>
+      </div>
+      <h1 class="portal-title">Tap to Visit Store</h1>
+    </header>
+
+    <!-- Pure Logo Buttons Grid -->
+    <nav class="buttons-grid" aria-label="Official Store Links">
+
+      <!-- 1. Barnes & Noble -->
+      <a href="https://www.barnesandnoble.com/" 
+         class="logo-btn btn-bn" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         aria-label="Barnes & Noble">
+        <img src="assets/barnes-noble-light.svg" 
+             alt="Barnes & Noble" 
+             loading="eager" 
+             fetchpriority="high" />
+        <div class="logo-btn-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </div>
+      </a>
+
+      <!-- 2. Hungry Ear Records -->
+      <a href="https://hungryear.com/" 
+         class="logo-btn btn-he" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         aria-label="Hungry Ear Records">
+        <img src="assets/hungry-ear.svg" 
+             alt="Hungry Ear Records" 
+             loading="eager" 
+             fetchpriority="high" />
+        <div class="logo-btn-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </div>
+      </a>
+
+      <!-- 3. eBay -->
+      <a href="https://www.ebay.com/" 
+         class="logo-btn btn-ebay" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         aria-label="eBay">
+        <img src="assets/ebay.svg" 
+             alt="eBay" 
+             loading="eager" 
+             fetchpriority="high" />
+        <div class="logo-btn-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </div>
+      </a>
+
+      <!-- 4. BOOK·OFF -->
+      <a href="https://www.bookoffusa.com/" 
+         class="logo-btn btn-bookoff" 
+         target="_blank" 
+         rel="noopener noreferrer"
+         aria-label="BOOK OFF">
+        <img src="assets/book-off.png" 
+             alt="BOOK OFF" 
+             loading="eager" 
+             fetchpriority="high" />
+        <div class="logo-btn-link-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </div>
+      </a>
+
+    </nav>
+
+    <!-- Footer -->
+    <footer class="portal-footer">
+      <p>© 2026 Store Directory • Tap any logo to open</p>
+    </footer>
+  </main>
+
+</body>
+</html>
