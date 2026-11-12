@@ -98,8 +98,9 @@
       gap: 1.125rem;
     }
 
-    /* Common Logo Button Card Styles */
-    .logo-btn {
+    /* Common Card Styles */
+    .logo-btn,
+    .store-card {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -113,12 +114,16 @@
       outline: none;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
-      cursor: pointer;
       transition: var(--transition);
       overflow: hidden;
     }
 
-    .logo-btn:focus-visible {
+    .logo-btn {
+      cursor: pointer;
+    }
+
+    .logo-btn:focus-visible,
+    .store-card:focus-within {
       outline: 3px solid #38bdf8;
       outline-offset: 3px;
     }
@@ -131,7 +136,7 @@
       transform: scale(0.975);
     }
 
-    /* Mini external link icon badge in corner */
+    /* Mini external link icon badge in corner for single-link cards */
     .logo-btn-link-icon {
       position: absolute;
       top: 0.75rem;
@@ -214,7 +219,7 @@
     }
 
     .btn-he .logo-box {
-      height: 74px; /* Enlarged height box */
+      height: 74px;
     }
 
     .btn-he img,
@@ -261,31 +266,143 @@
     }
 
     /* ========================================================
-       4. BOOK·OFF Button (Cropped Logo)
+       4. BOOK·OFF Card (Dual Action: Online Shop & Kaka'ako Store)
        ======================================================== */
-    .btn-bookoff {
+    .card-bookoff {
       background: #000000;
       border: 1px solid rgba(255, 255, 255, 0.3);
       box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.7),
                   0 0 15px rgba(255, 255, 255, 0.1);
+      padding-block: 1rem 1rem;
     }
 
-    .btn-bookoff:hover {
+    .card-bookoff:hover {
       box-shadow: 0 14px 30px -4px rgba(0, 0, 0, 0.9),
                   0 0 25px rgba(255, 255, 255, 0.35);
       border-color: rgba(255, 255, 255, 0.8);
+      transform: translateY(-2px);
     }
 
-    .btn-bookoff img {
-      max-height: 52px;
+    .bookoff-brand-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-decoration: none;
+      outline: none;
+      border-radius: 0.75rem;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .bookoff-brand-link:hover {
+      transform: scale(1.02);
+      opacity: 0.95;
+    }
+
+    .card-bookoff .logo-box {
+      height: 48px;
+    }
+
+    .card-bookoff .logo-box img {
+      max-height: 48px;
       width: auto;
-      max-width: 88%;
+      max-width: 86%;
       filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.25));
     }
 
-    .btn-bookoff .logo-btn-link-icon {
+    /* Dual Action Buttons Row */
+    .bookoff-dual-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.625rem;
+      width: 100%;
+      margin-top: 0.75rem;
+    }
+
+    .sub-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      padding-block: 0.52rem;
+      padding-inline: 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      text-decoration: none;
+      outline: none;
+      transition: var(--transition);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .sub-btn:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
+
+    .sub-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .sub-btn:active {
+      transform: scale(0.96);
+    }
+
+    .sub-btn-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .sub-btn-arrow {
+      width: 10px;
+      height: 10px;
+      opacity: 0.7;
+      flex-shrink: 0;
+      margin-left: 0.05rem;
+    }
+
+    /* 1. Online Shop: Cyan / Web blue */
+    .btn-online {
+      background: rgba(14, 165, 233, 0.12);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+
+    .btn-online:hover {
+      background: rgba(14, 165, 233, 0.24);
+      border-color: #38bdf8;
       color: #ffffff;
-      background: rgba(255, 255, 255, 0.18);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.3);
+    }
+
+    /* 2. Kaka'ako Store: Warm Amber / Sunset gold */
+    .btn-store {
+      background: rgba(245, 158, 11, 0.12);
+      color: #fde047;
+      border: 1px solid rgba(251, 191, 36, 0.35);
+    }
+
+    .btn-store:hover {
+      background: rgba(245, 158, 11, 0.24);
+      border-color: #fbbf24;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+    }
+
+    @media (max-width: 360px) {
+      .sub-btn {
+        font-size: 0.7rem;
+        padding-inline: 0.4rem;
+        gap: 0.25rem;
+      }
+      .bookoff-dual-actions {
+        gap: 0.4rem;
+      }
     }
 
     /* Logo Box & Physical Media Tags Row */
@@ -352,7 +469,7 @@
       border: 1px solid #cbd5e1;
     }
 
-    .btn-bookoff .media-tag {
+    .card-bookoff .media-tag {
       background: rgba(255, 255, 255, 0.14);
       color: #e2e8f0;
       border: 1px solid rgba(255, 255, 255, 0.26);
@@ -389,7 +506,7 @@
          rel="noopener noreferrer"
          aria-label="Barnes & Noble">
         <div class="logo-box">
-          <img src="assets/barnes-noble-light.svg?v=3" 
+          <img src="assets/barnes-noble-light.svg?v=4" 
                alt="Barnes & Noble" 
                loading="eager" 
                fetchpriority="high" />
@@ -412,7 +529,7 @@
          rel="noopener noreferrer"
          aria-label="Hungry Ear Records">
         <div class="logo-box">
-          <img src="assets/hungry-ear.svg?v=3" 
+          <img src="assets/hungry-ear.svg?v=4" 
                alt="Hungry Ear Records" 
                loading="eager" 
                fetchpriority="high" />
@@ -435,7 +552,7 @@
          rel="noopener noreferrer"
          aria-label="eBay">
         <div class="logo-box">
-          <img src="assets/ebay.svg?v=3" 
+          <img src="assets/ebay.svg?v=4" 
                alt="eBay" 
                loading="eager" 
                fetchpriority="high" />
@@ -451,28 +568,60 @@
         </div>
       </a>
 
-      <!-- 4. BOOK·OFF -->
-      <a href="https://www.bookoffusa.com/" 
-         class="logo-btn btn-bookoff" 
-         target="_blank" 
-         rel="noopener noreferrer"
-         aria-label="BOOK OFF">
-        <div class="logo-box">
-          <img src="assets/book-off.png?v=3" 
-               alt="BOOK OFF" 
-               loading="eager" 
-               fetchpriority="high" />
-        </div>
+      <!-- 4. BOOK·OFF (Dual Action: Online Shop & Kaka'ako Store) -->
+      <article class="store-card card-bookoff">
+        <a href="https://www.bookoffusa.com/pages/shop" 
+           class="bookoff-brand-link" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="BOOK OFF Official Shop">
+          <div class="logo-box">
+            <img src="assets/book-off.png?v=4" 
+                 alt="BOOK OFF" 
+                 loading="eager" 
+                 fetchpriority="high" />
+          </div>
+        </a>
+
         <div class="media-tags">
           <span class="media-tag">Books</span>
           <span class="media-tag">Manga</span>
           <span class="media-tag">CD &amp; DVD</span>
           <span class="media-tag">Games</span>
         </div>
-        <div class="logo-btn-link-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+
+        <div class="bookoff-dual-actions">
+          <a href="https://www.bookoffusa.com/pages/shop" 
+             class="sub-btn btn-online" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="BOOK OFF Online Shop">
+            <svg class="sub-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>Online Shop</span>
+            <svg class="sub-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+            </svg>
+          </a>
+
+          <a href="https://www.bookoffusa.com/pages/store-location/bookoff-kakaako-store" 
+             class="sub-btn btn-store" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="BOOK OFF Kaka'ako Store Location">
+            <svg class="sub-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>Kaka'ako Store</span>
+            <svg class="sub-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+            </svg>
+          </a>
         </div>
-      </a>
+      </article>
 
     </nav>
 
